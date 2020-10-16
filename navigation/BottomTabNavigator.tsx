@@ -6,11 +6,11 @@ import * as React from "react";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import HomeTabScreen from "../screens/HomeTabScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import MedicationsTabScreen from "../screens/MedicationsTabScreen";
 import {
   BottomTabParamList,
   HomeTabParamList,
-  TabTwoParamList,
+  MedicationsTabParamList,
 } from "../types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -34,7 +34,7 @@ export default function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Medications"
-        component={TabTwoNavigator}
+        component={MedicationsTabNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="ios-medkit" color={color} />
@@ -67,16 +67,16 @@ function HomeTabNavigator() {
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const MedicationsTabStack = createStackNavigator<MedicationsTabParamList>();
 
-function TabTwoNavigator() {
+function MedicationsTabNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
+    <MedicationsTabStack.Navigator>
+      <MedicationsTabStack.Screen
+        name="MedicationsTabScreen"
+        component={MedicationsTabScreen}
         options={{ headerTitle: "Medications" }}
       />
-    </TabTwoStack.Navigator>
+    </MedicationsTabStack.Navigator>
   );
 }

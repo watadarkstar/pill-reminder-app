@@ -12,6 +12,6 @@ export type HomeTabParamList = {
   HomeTabScreen: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type MedicationsTabParamList = {
+  MedicationsTabScreen: undefined;
 };
