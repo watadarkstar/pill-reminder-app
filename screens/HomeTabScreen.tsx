@@ -9,11 +9,15 @@ const actions: Array<IActionProps> = [
   {
     text: "Add Medication",
     icon: <Fontisto name="pills" color="white" />,
-    name: "medication",
+    name: "AddMedicationScreen",
   },
 ];
 
-export default function HomeTab() {
+type Props = {
+  navigation: any;
+};
+
+const HomeTabScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Home Screen</Text>
@@ -21,11 +25,14 @@ export default function HomeTab() {
         actions={actions}
         onPressItem={(name) => {
           console.log(`selected button: ${name}`);
+          navigation.navigate(name);
         }}
       />
     </View>
   );
-}
+};
+
+export default HomeTabScreen;
 
 const styles = StyleSheet.create({
   container: {

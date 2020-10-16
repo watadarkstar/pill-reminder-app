@@ -6,6 +6,7 @@ import * as React from "react";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import HomeTabScreen from "../screens/HomeTabScreen";
+import AddMedicationScreen from "../screens/AddMedicationScreen";
 import MedicationsTabScreen from "../screens/MedicationsTabScreen";
 import {
   BottomTabParamList,
@@ -58,6 +59,11 @@ function HomeTabNavigator() {
         name="HomeTabScreen"
         component={HomeTabScreen}
         options={{ headerTitle: "Home" }}
+      />
+      <HomeTabStack.Screen
+        name="AddMedicationScreen"
+        component={AddMedicationScreen}
+        options={{ headerTitle: "Add Medication" }}
       />
     </HomeTabStack.Navigator>
   );

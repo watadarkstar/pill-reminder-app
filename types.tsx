@@ -10,6 +10,7 @@ export type BottomTabParamList = {
 
 export type HomeTabParamList = {
   HomeTabScreen: undefined;
+  AddMedicationScreen: undefined;
 };
 
 export type MedicationsTabParamList = {
