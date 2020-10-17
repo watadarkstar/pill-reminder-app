@@ -5,12 +5,14 @@ import { FloatingAction, IActionProps } from "react-native-floating-action";
 import { Agenda } from "react-native-calendars";
 
 import { View } from "../components/Themed";
+import Colors from "../constants/Colors";
 
 const actions: Array<IActionProps> = [
   {
     text: "Add Medication",
     icon: <Fontisto name="pills" color="white" />,
     name: "AddMedicationScreen",
+    color: Colors.primary,
   },
 ];
 
@@ -23,6 +25,13 @@ const items = {
   "2012-05-23": [{ name: "item 2 - any js object", height: 80 }],
   "2012-05-24": [],
   "2012-05-25": [{ name: "item 3 - any js object" }, { name: "any js object" }],
+};
+
+const calendarTheme = {
+  dotColor: Colors.primary,
+  todayTextColor: Colors.primary,
+  selectedDotColor: Colors.white,
+  selectedDayBackgroundColor: Colors.primary,
 };
 
 const HomeTabScreen: React.FC<Props> = ({ navigation }) => {
@@ -43,9 +52,11 @@ const HomeTabScreen: React.FC<Props> = ({ navigation }) => {
         }}
         selected={"2020-10-15"}
         style={styles.agenda}
+        theme={calendarTheme}
       />
       <FloatingAction
         actions={actions}
+        color={Colors.primary}
         onPressItem={(name) => {
           console.log(`selected button: ${name}`);
           navigation.navigate(name);
