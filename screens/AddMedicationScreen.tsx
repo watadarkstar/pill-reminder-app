@@ -33,15 +33,15 @@ const MedicationsList: React.FC<MedicationListProps> = ({
 };
 
 const API_URL = "https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search";
-const MAX_LIST = 100;
+const MAX_LIST = 50;
 export default function AddMedicationScreen() {
   const [medication, setMedication] = useState("");
   const { isLoading, error, data } = useQuery(`search${medication}`, () => {
     if (!medication.length) return undefined;
 
-    return fetch(`${API_URL}?terms=${medication}&maxList=100`).then((res) =>
-      res.json()
-    );
+    return fetch(
+      `${API_URL}?terms=${medication}&maxList=${MAX_LIST}`
+    ).then((res) => res.json());
   });
 
   return (
