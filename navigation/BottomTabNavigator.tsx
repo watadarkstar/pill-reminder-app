@@ -54,7 +54,11 @@ const HomeTabStack = createStackNavigator<HomeTabParamList>();
 
 function HomeTabNavigator() {
   return (
-    <HomeTabStack.Navigator>
+    <HomeTabStack.Navigator
+      screenOptions={{
+        headerTintColor: Colors.primary,
+      }}
+    >
       <HomeTabStack.Screen
         name="HomeTabScreen"
         component={HomeTabScreen}
