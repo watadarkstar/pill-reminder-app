@@ -4,7 +4,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
 import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
 import HomeTabScreen from "../screens/HomeTabScreen";
 import AddMedicationScreen from "../screens/AddMedicationScreen";
 import MedicationsTabScreen from "../screens/MedicationsTabScreen";
@@ -17,8 +16,6 @@ import {
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
-
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
@@ -54,11 +51,7 @@ const HomeTabStack = createStackNavigator<HomeTabParamList>();
 
 function HomeTabNavigator() {
   return (
-    <HomeTabStack.Navigator
-      screenOptions={{
-        headerTintColor: Colors.primary,
-      }}
-    >
+    <HomeTabStack.Navigator>
       <HomeTabStack.Screen
         name="HomeTabScreen"
         component={HomeTabScreen}
