@@ -11,6 +11,19 @@ type MedicationListProps = {
   data: any;
   error: any;
 };
+
+type MedicationListItemProps = {
+  text: string;
+};
+
+const MedicationListItem: React.FC<MedicationListItemProps> = ({ text }) => {
+  return (
+    <TouchableOpacity style={styles.medicationItem}>
+      <Text style={styles.medicationText}>{text}</Text>
+    </TouchableOpacity>
+  );
+};
+
 const MedicationsList: React.FC<MedicationListProps> = ({
   data,
   error,
@@ -25,11 +38,11 @@ const MedicationsList: React.FC<MedicationListProps> = ({
   }
 
   const results = data[1];
-  return results.map((drug: string) => (
-    <TouchableOpacity key={drug} style={styles.medicationItem}>
-      <Text style={styles.medicationText}>{drug}</Text>
-    </TouchableOpacity>
-  ));
+  return results.map((medication: string) =>
+    medication ? (
+      <MedicationListItem key={medication} text={medication} />
+    ) : null
+  );
 };
 
 const API_URL = "https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search";
@@ -53,6 +66,7 @@ export default function AddMedicationScreen() {
         onChangeText={(text) => setMedication(text)}
         value={medication}
       />
+      <MedicationListItem text={medication} />
       <MedicationsList data={data} isLoading={isLoading} error={error} />
     </ScrollView>
   );
