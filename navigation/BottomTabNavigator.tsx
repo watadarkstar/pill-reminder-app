@@ -20,7 +20,12 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="Today"
-      tabBarOptions={{ activeTintColor: Colors.primary }}
+      tabBarOptions={{
+        activeTintColor: Colors.primary,
+        tabStyle: {
+          marginBottom: 5,
+        },
+      }}
     >
       <BottomTab.Screen
         name="Today"

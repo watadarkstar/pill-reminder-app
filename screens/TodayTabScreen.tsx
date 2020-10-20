@@ -1,8 +1,9 @@
-import { Fontisto } from "@expo/vector-icons";
 import * as React from "react";
-import { StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
-import { View } from "../components/Themed";
+import CardTitle from "../components/CardTitle";
+import Card from "../components/Card";
+import Button from "../components/Button";
 import AddMedicationFloatingAction from "../components/AddMedicationFloatingAction";
 
 type Props = {
@@ -12,7 +13,17 @@ type Props = {
 const TodayTabScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Today Screen</Text>
+      <Card>
+        <CardTitle>No Medications</CardTitle>
+        <Text style={styles.cardDescription}>
+          You have no medications. Add a medication to see your daily
+          medications taken.
+        </Text>
+        <Button
+          text="Add Medication"
+          onPress={() => navigation.navigate("AddMedication")}
+        />
+      </Card>
       <AddMedicationFloatingAction navigation={navigation} />
     </View>
   );
@@ -24,10 +35,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    padding: 20,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
+  cardDescription: {
+    marginTop: 10,
+    marginBottom: 10,
   },
 });

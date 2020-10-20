@@ -1,10 +1,9 @@
 import { Fontisto } from "@expo/vector-icons";
 import * as React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { IActionProps } from "react-native-floating-action";
 import { Agenda } from "react-native-calendars";
 
-import { View } from "../components/Themed";
 import Colors from "../constants/Colors";
 
 const actions: Array<IActionProps> = [

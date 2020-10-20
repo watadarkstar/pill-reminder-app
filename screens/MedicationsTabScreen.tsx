@@ -1,7 +1,9 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-import { Text, View } from "../components/Themed";
+import CardTitle from "../components/CardTitle";
+import Card from "../components/Card";
+import Button from "../components/Button";
 import AddMedicationFloatingAction from "../components/AddMedicationFloatingAction";
 
 type Props = {
@@ -11,7 +13,17 @@ type Props = {
 const MedicationsTabScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Medications Screen</Text>
+      <Card>
+        <CardTitle>No Medications</CardTitle>
+        <Text style={styles.cardDescription}>
+          You have no medications. Add a medication to see all your medications
+          on this screen.
+        </Text>
+        <Button
+          text="Add Medication"
+          onPress={() => navigation.navigate("AddMedication")}
+        />
+      </Card>
       <AddMedicationFloatingAction navigation={navigation} />
     </View>
   );
@@ -23,10 +35,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    padding: 20,
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
+  },
+  cardDescription: {
+    marginTop: 10,
+    marginBottom: 10,
   },
 });

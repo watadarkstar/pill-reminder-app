@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, TextInput } from "react-native";
+import { ScrollView, StyleSheet, TextInput, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useQuery } from "react-query";
 
+import Spinner from "../components/Spinner";
+import Card from "../components/Card";
 import Colors from "../constants/Colors";
-import { Text, View } from "../components/Themed";
+import Button from "../components/Button";
 
 type MedicationListProps = {
   isLoading: boolean;
@@ -29,7 +31,7 @@ const MedicationsList: React.FC<MedicationListProps> = ({
   error,
   isLoading,
 }) => {
-  if (isLoading) return <Text>Loading...</Text>;
+  if (isLoading) return <Spinner />;
 
   if (error) return <Text>{`An error has occurred: ${error.message}`}</Text>;
 
@@ -45,9 +47,13 @@ const MedicationsList: React.FC<MedicationListProps> = ({
   );
 };
 
+type Props = {
+  navigation: any;
+};
+
 const API_URL = "https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search";
 const MAX_LIST = 50;
-export default function AddMedicationScreen() {
+const AddMedicationScreen: React.FC<Props> = ({ navigation }) => {
   const [medication, setMedication] = useState("");
   const { isLoading, error, data } = useQuery(`search${medication}`, () => {
     if (!medication.length) return undefined;
@@ -59,18 +65,26 @@ export default function AddMedicationScreen() {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.label}>Medication Name</Text>
-      <TextInput
-        placeholder="Medication"
-        style={styles.input}
-        onChangeText={(text) => setMedication(text)}
-        value={medication}
+      <Card>
+        <Text style={styles.label}>Medication Name</Text>
+        <TextInput
+          placeholder="Medication"
+          style={styles.input}
+          onChangeText={(text) => setMedication(text)}
+          value={medication}
+        />
+        {medication !== "" && <MedicationListItem text={medication} />}
+        <MedicationsList data={data} isLoading={isLoading} error={error} />
+      </Card>
+      <Button
+        text="Add Medication"
+        onPress={() => navigation.navigate("AddMedication")}
       />
-      <MedicationListItem text={medication} />
-      <MedicationsList data={data} isLoading={isLoading} error={error} />
     </ScrollView>
   );
-}
+};
+
+export default AddMedicationScreen;
 
 const styles = StyleSheet.create({
   container: {
