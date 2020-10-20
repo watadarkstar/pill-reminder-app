@@ -3,8 +3,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 import { ColorSchemeName } from "react-native";
 
+import AddMedicationScreen from "../screens/AddMedicationScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import { RootStackParamList } from "../types";
+import { RootStackParamList, AddMedicationTabParamList } from "../types";
 import BottomTabNavigator from "./BottomTabNavigator";
 import LinkingConfiguration from "./LinkingConfiguration";
 
@@ -30,6 +31,20 @@ export default function Navigation({
 // Read more here: https://reactnavigation.org/docs/modal
 const Stack = createStackNavigator<RootStackParamList>();
 
+const AddMedicationTabStack = createStackNavigator<AddMedicationTabParamList>();
+
+function AddMedicationNavigator() {
+  return (
+    <AddMedicationTabStack.Navigator>
+      <AddMedicationTabStack.Screen
+        name="AddMedicationScreen"
+        component={AddMedicationScreen}
+        options={{ headerTitle: "Add Medication" }}
+      />
+    </AddMedicationTabStack.Navigator>
+  );
+}
+
 function RootNavigator() {
   return (
     <Stack.Navigator
@@ -37,11 +52,16 @@ function RootNavigator() {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
+      <Stack.Screen name="Home" component={BottomTabNavigator} />
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
+      />
+      <Stack.Screen
+        name="AddMedication"
+        component={AddMedicationNavigator}
+        options={{ title: "Add Medication" }}
       />
     </Stack.Navigator>
   );

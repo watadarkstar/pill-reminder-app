@@ -59,7 +59,7 @@ export default function AddMedicationScreen() {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.label}>What medication would like to add?</Text>
+      <Text style={styles.label}>Medication Name</Text>
       <TextInput
         placeholder="Medication"
         style={styles.input}

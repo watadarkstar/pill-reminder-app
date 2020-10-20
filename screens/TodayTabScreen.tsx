@@ -1,23 +1,24 @@
+import { Fontisto } from "@expo/vector-icons";
 import * as React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
-import { Text, View } from "../components/Themed";
+import { View } from "../components/Themed";
 import AddMedicationFloatingAction from "../components/AddMedicationFloatingAction";
 
 type Props = {
   navigation: any;
 };
 
-const MedicationsTabScreen: React.FC<Props> = ({ navigation }) => {
+const TodayTabScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Medications Screen</Text>
+      <Text style={styles.title}>Today Screen</Text>
       <AddMedicationFloatingAction navigation={navigation} />
     </View>
   );
 };
 
-export default MedicationsTabScreen;
+export default TodayTabScreen;
 
 const styles = StyleSheet.create({
   container: {

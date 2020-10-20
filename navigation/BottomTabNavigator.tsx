@@ -1,31 +1,43 @@
-import { Fontisto } from "@expo/vector-icons";
+import { Fontisto, MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
 import Colors from "../constants/Colors";
-import HomeTabScreen from "../screens/HomeTabScreen";
-import AddMedicationScreen from "../screens/AddMedicationScreen";
+import TodayTabScreen from "../screens/TodayTabScreen";
 import MedicationsTabScreen from "../screens/MedicationsTabScreen";
 import {
   BottomTabParamList,
-  HomeTabParamList,
+  TodayTabParamList,
+  CalendarTabParamList,
   MedicationsTabParamList,
 } from "../types";
+import CalendarTabScreen from "../screens/CalendarTabScreen";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Today"
       tabBarOptions={{ activeTintColor: Colors.primary }}
     >
       <BottomTab.Screen
-        name="Home"
-        component={HomeTabNavigator}
+        name="Today"
+        component={TodayTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="checkbox-active" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Calendar"
+        component={CalendarTabNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="calendar" color={color} />
+          ),
         }}
       />
       <BottomTab.Screen
@@ -42,27 +54,36 @@ export default function BottomTabNavigator() {
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
 function TabBarIcon(props: { name: string; color: string }) {
-  return <Fontisto size={20} style={{ marginBottom: -3 }} {...props} />;
+  return <Fontisto size={18} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const HomeTabStack = createStackNavigator<HomeTabParamList>();
+const TodayTabStack = createStackNavigator<TodayTabParamList>();
 
-function HomeTabNavigator() {
+function TodayTabNavigator() {
   return (
-    <HomeTabStack.Navigator>
-      <HomeTabStack.Screen
-        name="HomeTabScreen"
-        component={HomeTabScreen}
-        options={{ headerTitle: "Home" }}
+    <TodayTabStack.Navigator>
+      <TodayTabStack.Screen
+        name="TodayTabScreen"
+        component={TodayTabScreen}
+        options={{ headerTitle: "Today" }}
       />
-      <HomeTabStack.Screen
-        name="AddMedicationScreen"
-        component={AddMedicationScreen}
-        options={{ headerTitle: "Add Medication" }}
+    </TodayTabStack.Navigator>
+  );
+}
+
+const CalendarTabStack = createStackNavigator<CalendarTabParamList>();
+
+function CalendarTabNavigator() {
+  return (
+    <CalendarTabStack.Navigator>
+      <CalendarTabStack.Screen
+        name="CalendarTabScreen"
+        component={CalendarTabScreen}
+        options={{ headerTitle: "Calendar" }}
       />
-    </HomeTabStack.Navigator>
+    </CalendarTabStack.Navigator>
   );
 }
 

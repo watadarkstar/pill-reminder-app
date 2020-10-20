@@ -1,7 +1,7 @@
 import { Fontisto } from "@expo/vector-icons";
 import * as React from "react";
 import { StyleSheet } from "react-native";
-import { FloatingAction, IActionProps } from "react-native-floating-action";
+import { IActionProps } from "react-native-floating-action";
 import { Agenda } from "react-native-calendars";
 
 import { View } from "../components/Themed";
@@ -34,7 +34,7 @@ const calendarTheme = {
   selectedDayBackgroundColor: Colors.primary,
 };
 
-const HomeTabScreen: React.FC<Props> = ({ navigation }) => {
+const CalendarTabScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Agenda
@@ -54,19 +54,11 @@ const HomeTabScreen: React.FC<Props> = ({ navigation }) => {
         style={styles.agenda}
         theme={calendarTheme}
       />
-      <FloatingAction
-        actions={actions}
-        color={Colors.primary}
-        onPressItem={(name) => {
-          console.log(`selected button: ${name}`);
-          navigation.navigate(name);
-        }}
-      />
     </View>
   );
 };
 
-export default HomeTabScreen;
+export default CalendarTabScreen;
 
 const styles = StyleSheet.create({
   container: {

@@ -6,9 +6,9 @@ export default {
     screens: {
       Root: {
         screens: {
-          HomeTab: {
+          TodayTab: {
             screens: {
-              HomeTabScreen: "home",
+              TodayTabScreen: "today",
             },
           },
           MedicationsTab: {

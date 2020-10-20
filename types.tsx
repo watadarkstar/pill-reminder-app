@@ -1,16 +1,25 @@
 export type RootStackParamList = {
-  Root: undefined;
+  Home: undefined;
   NotFound: undefined;
+  AddMedication: undefined;
+};
+
+export type AddMedicationTabParamList = {
+  AddMedicationScreen: undefined;
 };
 
 export type BottomTabParamList = {
-  Home: undefined;
+  Today: undefined;
+  Calendar: undefined;
   Medications: undefined;
 };
 
-export type HomeTabParamList = {
-  HomeTabScreen: undefined;
-  AddMedicationScreen: undefined;
+export type CalendarTabParamList = {
+  CalendarTabScreen: undefined;
+};
+
+export type TodayTabParamList = {
+  TodayTabScreen: undefined;
 };
 
 export type MedicationsTabParamList = {
