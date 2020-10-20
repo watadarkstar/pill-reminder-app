@@ -5,6 +5,7 @@ import { IActionProps } from "react-native-floating-action";
 import { Agenda } from "react-native-calendars";
 
 import Colors from "../constants/Colors";
+import AddMedicationFloatingAction from "../components/AddMedicationFloatingAction";
 
 const actions: Array<IActionProps> = [
   {
@@ -53,6 +54,7 @@ const CalendarTabScreen: React.FC<Props> = ({ navigation }) => {
         style={styles.agenda}
         theme={calendarTheme}
       />
+      <AddMedicationFloatingAction navigation={navigation} />
     </View>
   );
 };
